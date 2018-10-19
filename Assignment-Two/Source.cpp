@@ -111,7 +111,7 @@ void enterFiveTimesCheckForGold()
 	int i;
 	int x, y;
 
-	for (i = 0; i < 2; i++)
+	for (i = 0; i < 5; i++)
 	{
 
 		cout << " Enter x coordinate (1-8):";
