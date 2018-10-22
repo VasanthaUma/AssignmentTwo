@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include <time.h>
+
 using namespace std;
 // Declaring Constant
 const int TIMES = 8;
@@ -17,9 +18,14 @@ void dispalyGBOnGameBoard();
 
 int main()
 {
+		
 	system("color F0");
+	char answer;
+	
 	// calling functions
 	cout << setw(4);
+	do
+	{
 	displayNum();
 	displayLine();
 	displayArrayWithQuestionMark();
@@ -33,6 +39,9 @@ int main()
 	displayLine();
 	dispalyGBOnGameBoard();
 	displayLine();
+	cout << "do you want to continue? ";
+	cin >> answer;
+	} while (answer == 'y' || answer =='Y');
 	system("pause");
 	return 0;
 
@@ -165,29 +174,32 @@ void dispalyGBOnGameBoard()
 			rnum = (rand() % TIMES) + 1;
 			arr[row][col] = rnum;
 			cout << "  " << arr[row][col];
+			/* char(71) is ASCII Code of "G"
+				char(66) is ASCII code for "B"
+			*/
 			if (row == goldCoin1y && col == goldCoin1x)
 			{
-				cout << "G";
+				cout << char(71);
 			}
 			if (row == goldCoin2y && col == goldCoin2x)
 			{
-				cout << "G";
+				cout << char(71);
 			}
 			if (row == goldCoin3y && col == goldCoin3x)
 			{
-				cout << "G";
+				cout << char(71);
 			}
 			if (row == goldCoin4y && col == goldCoin4x)
 			{
-				cout << "G";
+				cout << char(71);
 			}
 			if (row == goldCoin5y && col == goldCoin5x)
 			{
-				cout << "G";
+				cout << char(71);
 			}
 			if (row == bomb1y && col == bomb1x)
 			{
-				cout << "B";
+				cout << char(66);
 			}
 		}
 		cout << endl;
