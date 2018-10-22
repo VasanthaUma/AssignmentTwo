@@ -1,4 +1,4 @@
-/* Developed by Vasantha Buddiga - Game to Find Gold*/
+/* Developed by Vasantha Buddiga - Game to Find Gold - Fun Game*/
 #include <iostream>
 #include <iomanip>
 #include <time.h>
