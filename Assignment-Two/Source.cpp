@@ -1,4 +1,4 @@
-/* Developed by Vasantha Buddiga - Game to Find Gold  Final*/
+/* Developed by Vasantha Buddiga - Game to Find Gold */
 #include <iostream>
 #include <iomanip>
 #include <time.h>
@@ -20,6 +20,7 @@ int main()
 {
 		
 	system("color F0");
+
 	char answer;
 	
 	// calling functions
