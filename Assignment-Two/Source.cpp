@@ -231,10 +231,10 @@ void printDispalyGBOnGameBoard()
 	arr[goldCoin4y][goldCoin4y] = 'G';
 	arr[goldCoin5y][goldCoin5x] = 'G';
 	arr[bomb1y][bomb1x] = 'B';
-	/*static int nCalls = 0;
+	static int nCalls = 0;
 	if (nCalls == 0)
 		srand(unsigned(time(NULL)));
-	nCalls++;*/
+	nCalls++;
 	for (row = 0; row < TIMES; row++)
 	{
 		cout << setw(4) << row + 1 << "|";
