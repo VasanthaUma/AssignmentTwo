@@ -6,6 +6,8 @@
 using namespace std;
 // Declaring Constant
 const int TIMES = 8;
+const int TURNS = 5;
+
 /* Declaring Functions */
 void displayNum();
 void displayLine();
@@ -20,9 +22,7 @@ int main()
 {
 		
 	system("color F0");
-
 	char answer;
-	
 	// calling functions
 	cout << setw(4);
 	do
@@ -40,7 +40,8 @@ int main()
 	displayLine();
 	dispalyGBOnGameBoard();
 	displayLine();
-	cout << "do you want to continue? ";
+
+	cout << "Do you want to continue? ";
 	cin >> answer;
 	} while (answer == 'y' || answer =='Y');
 	system("pause");
@@ -121,16 +122,17 @@ void enterFiveTimesCheckForGold()
 	int i;
 	int x, y;
 
-	for (i = 0; i < 5; i++)
+	for (i = 0; i < TURNS; i++)
 	{
 
-		cout << " Enter x coordinate (1-8):";
+		cout << " Enter y coordinate (0-7):";
+		cin >> y;
+		cout << endl;
+
+		cout << " Enter x coordinate(0-7):";
 		cin >> x;
 		cout << endl;
 
-		cout << " Enter y coordinate(1-8):";
-		cin >> y;
-		cout << endl;
 	}
 
 	return;
@@ -139,13 +141,22 @@ void enterFiveTimesCheckForGold()
    5 times "G" for gold and 1 time "B" for  bomb */
 void dispalyGBOnGameBoard()
 {
-	int row, col, arr[TIMES][TIMES];
-	int goldCoin1x, goldCoin1y;
-	int goldCoin2x, goldCoin2y;
-	int goldCoin3x, goldCoin3y;
-	int goldCoin4x, goldCoin4y;
-	int goldCoin5x, goldCoin5y;
+	int row, col;
+	char arr[TIMES][TIMES];
+	int goldCoin1y, goldCoin1x;
+	int goldCoin2y, goldCoin2x;
+	int goldCoin3y, goldCoin3x;
+	int goldCoin4y, goldCoin4x;
+	int goldCoin5y, goldCoin5x;
 	int bomb1x, bomb1y;
+	for (int r = 0; r < TIMES; r++)
+	{
+		for (int cl = 0; cl < TIMES; cl++)
+		{
+			arr[r][cl] = ' ';
+		}
+	}
+
 	goldCoin1x = rand() % TIMES;
 	goldCoin1y = rand() % TIMES;
 	goldCoin2x = rand() % TIMES;
@@ -158,6 +169,12 @@ void dispalyGBOnGameBoard()
 	goldCoin5y = rand() % TIMES;
 	bomb1x = rand() % TIMES;
 	bomb1y = rand() % TIMES;
+	arr[goldCoin1y][goldCoin1x] = 'G';
+	arr[goldCoin2y][goldCoin2x] = 'G';
+	arr[goldCoin3y][goldCoin3x] = 'G';
+	arr[goldCoin4y][goldCoin4y] = 'G';
+	arr[goldCoin5y][goldCoin5x] = 'G';
+	arr[bomb1y][bomb1x] = 'B';
 	static int nCalls = 0;
 	if (nCalls == 0)
 		srand(unsigned(time(NULL)));
@@ -167,42 +184,72 @@ void dispalyGBOnGameBoard()
 		cout << setw(4) << row + 1 << "|";
 		for (col = 0; col < TIMES; col++)
 		{
-			int rnum;
-			static int nCalls = 0;
-			if (nCalls == 0)
-				srand(unsigned(time(NULL)));
-			nCalls++;
-			rnum = (rand() % TIMES) + 1;
-			arr[row][col] = rnum;
-			cout << "  " << arr[row][col];
-			/* char(71) is ASCII Code of "G"
-				char(66) is ASCII code for "B"
-			*/
-			if (row == goldCoin1y && col == goldCoin1x)
-			{
-				cout << char(71);
-			}
-			if (row == goldCoin2y && col == goldCoin2x)
-			{
-				cout << char(71);
-			}
-			if (row == goldCoin3y && col == goldCoin3x)
-			{
-				cout << char(71);
-			}
-			if (row == goldCoin4y && col == goldCoin4x)
-			{
-				cout << char(71);
-			}
-			if (row == goldCoin5y && col == goldCoin5x)
-			{
-				cout << char(71);
-			}
-			if (row == bomb1y && col == bomb1x)
-			{
-				cout << char(66);
-			}
+			cout << "  "  << arr[row][col];
+			
 		}
+		
 		cout << endl;
 	}
+
+}
+/* Function8 : At random places of game board
+   5 times "G" for gold and 1 time "B" for  bomb
+   If user found gold it display F for Fouund */
+void printDispalyGBOnGameBoard()
+{
+	int row, col;
+	char arr[TIMES][TIMES];
+	int goldCoin1y, goldCoin1x;
+	int goldCoin2y, goldCoin2x;
+	int goldCoin3y, goldCoin3x;
+	int goldCoin4y, goldCoin4x;
+	int goldCoin5y, goldCoin5x;
+	int bomb1x, bomb1y;
+	for (int r = 0; r < TIMES; r++)
+	{
+		for (int cl = 0; cl < TIMES; cl++)
+		{
+			arr[r][cl] = ' ';
+		}
+	}
+
+	goldCoin1x = rand() % TIMES;
+	goldCoin1y = rand() % TIMES;
+	goldCoin2x = rand() % TIMES;
+	goldCoin2y = rand() % TIMES;
+	goldCoin3x = rand() % TIMES;
+	goldCoin3y = rand() % TIMES;
+	goldCoin4x = rand() % TIMES;
+	goldCoin4y = rand() % TIMES;
+	goldCoin5x = rand() % TIMES;
+	goldCoin5y = rand() % TIMES;
+	bomb1x = rand() % TIMES;
+	bomb1y = rand() % TIMES;
+	arr[goldCoin1y][goldCoin1x] = 'G';
+	arr[goldCoin2y][goldCoin2x] = 'G';
+	arr[goldCoin3y][goldCoin3x] = 'G';
+	arr[goldCoin4y][goldCoin4y] = 'G';
+	arr[goldCoin5y][goldCoin5x] = 'G';
+	arr[bomb1y][bomb1x] = 'B';
+	/*static int nCalls = 0;
+	if (nCalls == 0)
+		srand(unsigned(time(NULL)));
+	nCalls++;*/
+	for (row = 0; row < TIMES; row++)
+	{
+		cout << setw(4) << row + 1 << "|";
+		for (col = 0; col < TIMES; col++)
+		{
+			cout << "  " << arr[row][col];
+			if (arr[goldCoin1y][goldCoin1x] == arr[row][col])
+			{
+
+				cout << "F";
+
+			}
+		}
+
+		cout << endl;
+	}
+
 }
